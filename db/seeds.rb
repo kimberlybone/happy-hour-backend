@@ -14,3 +14,12 @@ matt = User.create(name: "Matt", password: "123", age: 27, budget: 25)
 margarita = Recipe.create(category: 'Margarita', name: 'Strawberry Margarita', price: 8, user: kim)
 
 mojito = Recipe.create(category: 'Mojito', name: 'Strawberry Mojito', price: 7, user: matt)
+
+
+ingredient_json = RestClient.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
+ingredient_array = JSON.parse(ingredient_json)["drinks"]
+ingredient_array.each do |ingredient|
+  Ingredient.create(
+    name: ingredient["strIngredient1"]
+  )
+end
