@@ -11,10 +11,11 @@ Ingredient.destroy_all
 
 kim = User.create(name: "Kimberly", password: "1", age: 22, budget: 300)
 matt = User.create(name: "Matt", password: "123", age: 27, budget: 25)
+happyhour = User.create(name: "Happy Hour", password: "bar", age: 0, budget: 1000)
 
-margarita = Recipe.create(category: 'Margarita', name: 'Strawberry Margarita', price: 8, user: kim)
+margarita = Recipe.create(category: 'Margarita', name: 'Strawberry Margarita', price: 8, user: kim, instructions: "Mix")
 
-mojito = Recipe.create(category: 'Mojito', name: 'Strawberry Mojito', price: 7, user: matt)
+mojito = Recipe.create(category: 'Mojito', name: 'Strawberry Mojito', price: 7, user: matt, instructions: "Add alcohol")
 
 
 ingredient_json = RestClient.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
@@ -35,6 +36,26 @@ drinks_category_array.each do |category|
   end
   recipes << drinks_array
 end
-recipes = recipes.flatten.uniq
+
+recipes = recipes.flatten.uniq{|recipe| recipe['strDrink']}
+
+recipes.each do |recipe|
+  new_recipe = Recipe.create(
+    category: recipe["category"],
+    name: recipe["strDrink"],
+    price: rand(7..15),
+    user: happyhour,
+    instructions: recipe["strInstructions"]
+  )
+  filtered_keys = recipe.keys.filter{|key| key.include?('strIngredient') && recipe[key] != nil}
+  filtered_keys.each do |key|
+      RecipeIngredient.create(
+        recipe: new_recipe,
+        ingredient: Ingredient.find_by(name: recipe[key])
+      )
+  end
+end
+
+
 # byebug
 nil
