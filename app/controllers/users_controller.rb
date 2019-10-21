@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       user_id = params[:id]
       if logged_in_user_id = user_id.to_i
         user = User.find(params[:id])
-        render json: user
+        render json: user, include: "**"
       else
         render json: {go_away: true}, status: :unauthorized
       end
