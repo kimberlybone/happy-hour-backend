@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
     recipes = Recipe.all
+    recipes = recipes.shuffle
     render json: recipes
   end
 
