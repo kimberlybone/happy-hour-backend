@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
       user = User.find(params[:user_id])
       render json: user, include: '**'
     else
-      render json: {errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: {errors: favorite.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
