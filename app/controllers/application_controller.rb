@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  before_action :authorized
 
   def authentication_json(user_id)
     {token: make_token(user_id), user_id: user_id}
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::API
 
   def hmac_secret
     ENV["JWT_SECRET_KEY"]
+  end
+
+  def authorized
+    render json: { message: 'Please Log In '}, status: :unauthorized unless logged_in?
   end
 
 end
