@@ -9,4 +9,18 @@ class RecipesController < ApplicationController
     recipe = Recipe.find_by(id: params[:id])
     render json: recipe
   end
+
+  def create
+    byebug
+    recipe = Recipe.create(user_id: params[:user_id], name: params[:name], category: params[:category], instructions: params[:instructions], price: rand(7..15))
+    if recipe.valid?
+      params[:ingredients].each do |ingredient|
+        RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: Ingredient.find_by(name: ingredient).id)
+      end
+      render json: recipe
+    else
+      render json: {hi: 'hi'}
+    end
+  end
+
 end
