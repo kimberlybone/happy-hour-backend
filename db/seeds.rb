@@ -10,9 +10,9 @@ happyhour = User.create(name: "Happy Hour", password: "bar", age: 0, budget: 100
 
 
 # RECIPES
-margarita = Recipe.create(category: 'Margarita', name: 'Strawberry Margarita', price: 8, user: kim, instructions: "Mix")
-mojito = Recipe.create(category: 'Mojito', name: 'Strawberry Mojito', price: 7, user: matt, instructions: "Add alcohol")
-
+# margarita = Recipe.create(category: 'margarita', name: 'Strawberry Margarita', price: 8, user: kim, instructions: "Mix")
+# mojito = Recipe.create(category: 'mojito', name: 'Strawberry Mojito', price: 7, user: matt, instructions: "Add alcohol")
+#
 
 
 ingredient_json = RestClient.get('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list')
@@ -42,7 +42,8 @@ recipes.each do |recipe|
     name: recipe["strDrink"],
     price: rand(7..15),
     user: happyhour,
-    instructions: recipe["strInstructions"]
+    instructions: recipe["strInstructions"],
+    img_url: recipe['strDrinkThumb']
   )
   filtered_keys = recipe.keys.filter{|key| key.include?('strIngredient') && recipe[key] != nil}
   filtered_keys.each do |key|
@@ -66,5 +67,32 @@ Favorite.create(user: matt, recipe: Recipe.all[7])
 Favorite.create(user: matt, recipe: Recipe.all[8])
 Favorite.create(user: matt, recipe: Recipe.all[9])
 
+# More ingredients
+Ingredient.create(name: 'Mint')
+Ingredient.create(name: 'Honey')
+Ingredient.create(name: 'Club Soda')
+Ingredient.create(name: 'Olives')
+Ingredient.create(name: 'Salt')
+Ingredient.create(name: 'Tonic')
+Ingredient.create(name: 'Ginger Ale')
+Ingredient.create(name: 'Cola')
+Ingredient.create(name: 'Ginger Beer')
+Ingredient.create(name: 'Simple Syrup')
+Ingredient.create(name: 'Ice')
+Ingredient.create(name: 'Cherries')
+Ingredient.create(name: 'Orange Juice')
+Ingredient.create(name: 'Absinthe')
+Ingredient.create(name: 'Raspberries')
+Ingredient.create(name: 'Raspberry Liqueur')
+Ingredient.create(name: 'White Wine')
+Ingredient.create(name: 'Agave Syrup')
+Ingredient.create(name: 'Peach Schnapps')
+Ingredient.create(name: 'Coconut Rum')
+Ingredient.create(name: 'Basil Leaves')
+Ingredient.create(name: 'Sake')
+Ingredient.create(name: 'Prosecco')
+Ingredient.create(name: 'Passion Fruit')
+Ingredient.create(name: 'Cucumber')
+
 # byebug
-nil
+# nil
