@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     recipe = Recipe.create(user_id: params[:user_id], name: params[:name], category: params[:category], instructions: params[:instructions], price: rand(7..15))
     if recipe.valid?
       params[:ingredients].each do |ingredient|
