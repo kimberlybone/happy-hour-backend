@@ -6,7 +6,7 @@ Ingredient.destroy_all
 # USERS
 kim = User.create(name: "Kimberly", password: "1", age: 22, budget: 300)
 matt = User.create(name: "Matt", password: "123", age: 27, budget: 25)
-happyhour = User.create(name: "Happy Hour", password: "bar", age: 0, budget: 1000)
+happyhour = User.create(name: "Happy Hour", password: "bar", age: 21, budget: 500)
 
 
 # RECIPES
@@ -40,7 +40,7 @@ recipes.each do |recipe|
   new_recipe = Recipe.create(
     category: recipe["category"],
     name: recipe["strDrink"],
-    price: rand(7..15),
+    price: rand(7..20),
     user: happyhour,
     instructions: recipe["strInstructions"],
     img_url: recipe['strDrinkThumb']
@@ -93,6 +93,7 @@ Ingredient.create(name: 'Sake')
 Ingredient.create(name: 'Prosecco')
 Ingredient.create(name: 'Passion Fruit')
 Ingredient.create(name: 'Cucumber')
+Ingredient.create(name: 'Hennessy')
 
 # byebug
 # nil
