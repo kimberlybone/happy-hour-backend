@@ -5,7 +5,7 @@ Our app provides a virtual bar experience for users where users can choose a sea
 ---
 
 ## Motivation
-Who doesn't appreciate a good happy hour?
+Who doesn't appreciate a good happy hour cocktail?
 
 ## Features
 - Search ingredients
@@ -37,7 +37,8 @@ Who doesn't appreciate a good happy hour?
 13. The user's newly created drink will now be shown on the menu
 
 ## Technologies
-- API: (https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita)
+- CocktailDB API: (https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita)
+- PostgreSQL
 - Ruby on Rails
 - JWT Auth
 - BCrypt
