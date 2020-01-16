@@ -47,10 +47,10 @@ Who doesn't appreciate a good happy hour cocktail?
 - RestClient
 
 ## Installation
-*To view live version, go to this URL:[]()*
+<!-- *To view live version, go to this URL:[]()* -->
 
 *To view locally, follow the instructions below*
-1. Clone repository
+1. Clone repository (Go to the "kimberlybone" branch)
 
   ```
   bundle install
@@ -61,7 +61,7 @@ Who doesn't appreciate a good happy hour cocktail?
   ```
 - Server needs to run on http://localhost:3000
 
-2. Go to frontend repository to view frontend installation
+2. Go to frontend repository to view frontend installation: [View frontend](https://github.com/kimberlybone/happy-hour-frontend)
 
 ---
 ***Authors: [Kimberly Bone](https://github.com/kimberlybone) & [Matt Werner](https://github.com/mrwerner392)***
